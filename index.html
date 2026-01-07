@@ -36,7 +36,7 @@
             font-weight: 400;
             line-height: 1.6;
             color: rgba(0, 0, 0, 0.85);
-            margin-bottom: 3rem;
+            margin-bottom: 1rem;
             animation: slideUp 1s ease-out 0.3s both;
         }
         
@@ -128,9 +128,25 @@
             '#F5FFE5'  // světle limetková
         ];
 
-        // Funkce pro získání náhodného prvku z pole
+        // Funkce pro získání náhodného prvku z pole (s kontrolou, aby se neopakoval předchozí)
         function getRandomItem(array) {
-            return array[Math.floor(Math.random() * array.length)];
+            const lastText = localStorage.getItem('lastDisplayedText');
+            let newText;
+            
+            // Pokud máme jen jednu položku, vrátíme ji
+            if (array.length === 1) {
+                return array[0];
+            }
+            
+            // Vybereme náhodný text, který není stejný jako předchozí
+            do {
+                newText = array[Math.floor(Math.random() * array.length)];
+            } while (newText === lastText && array.length > 1);
+            
+            // Uložíme aktuální text pro příští návštěvu
+            localStorage.setItem('lastDisplayedText', newText);
+            
+            return newText;
         }
 
         // Funkce pro převod hex barvy na RGB
