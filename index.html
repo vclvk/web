@@ -38,6 +38,7 @@
             color: rgba(0, 0, 0, 0.85);
             margin-bottom: 1rem;
             animation: slideUp 1s ease-out 0.3s both;
+            transition: opacity 0.5s ease;
         }
         
         .linkedin-link {
@@ -105,7 +106,6 @@
     </div>
 
     <script>
-        // Pole s náhodnými texty
         const texts = [
             "Příště tu už bude něco nového, slibuji.",
             "Nenaplněná očekávání? Napište mi na LinkedIn.",
@@ -115,42 +115,24 @@
             "Nic vám tu neprodám, prodává obsah, který navrhuju."
         ];
 
-        // Pole s pastelových barvami
         const pastelColors = [
-            '#FFE5E5', // světle růžová
-            '#E5F2FF', // světle modrá
-            '#E5FFE5', // světle zelená
-            '#FFF5E5', // světle oranžová
-            '#F5E5FF', // světle fialová
-            '#E5FFFF', // světle tyrkysová
-            '#FFFFE5', // světle žlutá
-            '#FFE5F5', // světle růžovo-fialová
-            '#E5FFF5', // světle mint
-            '#F5FFE5'  // světle limetková
+            '#FFE5E5', '#E5F2FF', '#E5FFE5', '#FFF5E5',
+            '#F5E5FF', '#E5FFFF', '#FFFFE5', '#FFE5F5',
+            '#E5FFF5', '#F5FFE5'
         ];
 
-        // Funkce pro získání náhodného prvku z pole (s kontrolou, aby se neopakoval předchozí)
-        function getRandomItem(array) {
-            const lastText = localStorage.getItem('lastDisplayedText');
-            let newText;
-            
-            // Pokud máme jen jednu položku, vrátíme ji
-            if (array.length === 1) {
-                return array[0];
-            }
-            
-            // Vybereme náhodný text, který není stejný jako předchozí
+        let lastText = null;
+        let lastColor = null;
+
+        function getRandomItem(array, last) {
+            if (array.length === 1) return array[0];
+            let item;
             do {
-                newText = array[Math.floor(Math.random() * array.length)];
-            } while (newText === lastText && array.length > 1);
-            
-            // Uložíme aktuální text pro příští návštěvu
-            localStorage.setItem('lastDisplayedText', newText);
-            
-            return newText;
+                item = array[Math.floor(Math.random() * array.length)];
+            } while (item === last);
+            return item;
         }
 
-        // Funkce pro převod hex barvy na RGB
         function hexToRgb(hex) {
             const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
             return result ? {
@@ -160,29 +142,33 @@
             } : null;
         }
 
-        // Funkce pro ztmavení barvy (snížení hodnot RGB o 40%)
         function darkenColor(hex) {
             const rgb = hexToRgb(hex);
             if (!rgb) return hex;
-            
-            const darkenFactor = 0.6; // ztmaví na 60% původní hodnoty
-            const r = Math.round(rgb.r * darkenFactor);
-            const g = Math.round(rgb.g * darkenFactor);
-            const b = Math.round(rgb.b * darkenFactor);
-            
-            return `rgb(${r}, ${g}, ${b})`;
+            const f = 0.6;
+            return `rgb(${Math.round(rgb.r * f)}, ${Math.round(rgb.g * f)}, ${Math.round(rgb.b * f)})`;
         }
 
-        // Nastavení náhodného textu
-        document.getElementById('randomText').textContent = getRandomItem(texts);
+        function update() {
+            const textEl = document.getElementById('randomText');
+            const icon = document.querySelector('.linkedin-icon');
 
-        // Nastavení náhodné barvy pozadí
-        const backgroundColor = getRandomItem(pastelColors);
-        document.body.style.backgroundColor = backgroundColor;
+            textEl.style.opacity = '0';
 
-        // Nastavení tmavší barvy pro LinkedIn ikonu
-        const iconColor = darkenColor(backgroundColor);
-        document.querySelector('.linkedin-icon').style.fill = iconColor;
+            setTimeout(() => {
+                lastText = getRandomItem(texts, lastText);
+                lastColor = getRandomItem(pastelColors, lastColor);
+
+                textEl.textContent = lastText;
+                document.body.style.backgroundColor = lastColor;
+                icon.style.fill = darkenColor(lastColor);
+
+                textEl.style.opacity = '1';
+            }, 500);
+        }
+
+        update();
+        setInterval(update, 4000);
     </script>
 </body>
 </html>
