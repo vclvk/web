@@ -1,174 +1,194 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="cs">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Petr Václavík</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;600&display=swap');
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 2rem;
-            font-family: 'IBM Plex Mono', monospace;
-            transition: background-color 0.8s ease;
-        }
-        
-        .content-wrapper {
-            max-width: 700px;
-            text-align: center;
-            animation: fadeIn 1.2s ease-out;
-        }
-        
-        .main-text {
-            font-family: 'IBM Plex Mono', monospace;
-            font-size: 14px;
-            font-weight: 400;
-            line-height: 1.6;
-            color: rgba(0, 0, 0, 0.85);
-            margin-bottom: 1rem;
-            animation: slideUp 1s ease-out 0.3s both;
-            transition: opacity 0.5s ease;
-        }
-        
-        .linkedin-link {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            animation: slideUp 1s ease-out 0.6s both;
-            text-decoration: none;
-        }
-        
-        .linkedin-link:hover {
-            transform: translateY(-4px) scale(1.1);
-        }
-        
-        .linkedin-link:active {
-            transform: translateY(-2px) scale(1.05);
-        }
-        
-        .linkedin-icon {
-            width: 24px;
-            height: 24px;
-        }
-        
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
-        }
-        
-        @keyframes slideUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        @media (max-width: 600px) {
-            .linkedin-icon {
-                width: 20px;
-                height: 20px;
-            }
-        }
-    </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Petr Václavík — zjednodušuji složité věci</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="content-wrapper">
-        <p class="main-text" id="randomText"></p>
-        <a href="https://www.linkedin.com/in/petrvaclavik/" 
-           class="linkedin-link" 
-           target="_blank" 
-           rel="noopener noreferrer"
-           aria-label="LinkedIn profil">
-            <svg class="linkedin-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-            </svg>
+  <div class="page">
+
+    <header class="nav">
+      <a class="nav__logo" href="index.html"><span>Petr Václavík</span></a>
+      <nav class="nav__menu">
+        <a href="index.html#prace" aria-current="page">Práce</a>
+        <a href="pristup.html">Přístup</a>
+        <a href="kontakt.html">Kontakt</a>
+      </nav>
+      <div class="nav__right">
+        <a class="nav__cta" href="kontakt.html">Napsat <span class="arrow">↗</span></a>
+      </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero__left">
+        <p class="micro micro--with-arrow"><span class="arrow">→</span> PORTFOLIO / 2026</p>
+        <h1 class="hero__title">
+          <span class="hero__line">Pochopit <span class="hero__line--muted">Petr</span></span>
+          <span class="hero__line">Vyřešit <span class="hero__line--muted">Václavík</span></span>
+        </h1>
+      </div>
+      <div class="hero__right">
+        <div class="photo photo--portrait photo--has-img" style="background-image: url('img/profil_4.jpg');">
+          <span class="photo__label">Strategie a kreativa</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRÁCE -->
+    <section class="section" id="prace">
+      <div class="section__head">
+        <div class="section__num">01 / PRÁCE</div>
+        <h2 class="section__title">Vybrané projekty</h2>
+        <p class="section__lead">Místo dlouhého seznamu, třešničky na dortu</p>
+      </div>
+
+      <div class="work-grid">
+
+        <!-- ANTHONY’S -->
+        <a class="project card-img" href="anthonys.html">
+          <div class="project__visual has-img" style="background-image: url('img/anthonys_1200_900.jpg');">
+            <div class="project__cta">↗</div>
+          </div>
+          <div>
+            <div class="project__meta">
+              <span class="project__client">Anthony’s</span>
+              <span class="project__year">2025</span>
+            </div>
+            <h3 class="project__name" style="margin-top:12px">Od formální módy k business casual</h3>
+            <div class="project__tags" style="margin-top:14px">
+              <span class="tag">Definice značky</span>
+              <span class="tag">Obsahová strategie</span>
+            </div>
+          </div>
         </a>
-    </div>
 
-    <script>
-        const texts = [
-            "Příště tu už bude něco nového, slibuji.",
-            "Nenaplněná očekávání? Napište mi na LinkedIn.",
-            "Tohle není konverzní web, napište mi přes LinkedIn a konverzním ho můžete udělat.",
-            "Jednou tu bude moje portfolio. Zatím jen microcopy.",
-            "Přišli jste z LinkedInu? Mrzí mě, že vás tam vracím, ale napište mi.",
-            "Nic vám tu neprodám, prodává obsah, který navrhuju."
-        ];
+        <!-- INNOGY -->
+        <a class="project card-img" href="innogy.html">
+          <div class="project__visual has-img" style="background-image: url('img/innogy_1200_900.jpg');">
+            <div class="project__cta">↗</div>
+          </div>
+          <div>
+            <div class="project__meta">
+              <span class="project__client">innogy</span>
+              <span class="project__year">2025</span>
+            </div>
+            <h3 class="project__name" style="margin-top:12px">Moje energie v innogy</h3>
+            <div class="project__tags" style="margin-top:14px">
+                 <span class="tag">Koncept</span>
+              <span class="tag">Značka zaměstnavatele</span>
+		<span class="tag">Obsahová strategie</span>
+            </div>
+          </div>
+        </a>
 
-        const pastelColors = [
-            '#FFE5E5', '#E5F2FF', '#E5FFE5', '#FFF5E5',
-            '#F5E5FF', '#E5FFFF', '#FFFFE5', '#FFE5F5',
-            '#E5FFF5', '#F5FFE5'
-        ];
+        <!-- ACTIVA -->
+        <a class="project card-img" href="activa.html">
+          <div class="project__visual has-img" style="background-image: url('img/activa_1200_900.jpg');">
+            <div class="project__cta">↗</div>
+          </div>
+          <div>
+            <div class="project__meta">
+              <span class="project__client">Activa</span>
+              <span class="project__year">2025</span>
+            </div>
+            <h3 class="project__name" style="margin-top:12px">Myšlenky, které stojí za zapsání</h3>
+            <div class="project__tags" style="margin-top:14px">
+              <span class="tag">Koncept</span>
+              <span class="tag">Texty</span>
+            </div>
+          </div>
+        </a>
 
-        let lastText = null;
-        let lastColor = null;
+        <!-- PROMEDICUS -->
+        <a class="project card-img" href="promedicus.html">
+          <div class="project__visual has-img" style="background-image: url('img/promedicus_1200_900.jpg');">
+            <div class="project__cta">↗</div>
+          </div>
+          <div>
+            <div class="project__meta">
+              <span class="project__client">Promedicus</span>
+              <span class="project__year">2025</span>
+            </div>
+            <h3 class="project__name" style="margin-top:12px">Jeden příběh pro zákazníky i pro nábor</h3>
+            <div class="project__tags" style="margin-top:14px">
+              <span class="tag">Definice značky</span>
+              <span class="tag">Značka zaměstnavatele</span>
+		<span class="tag">Obsahová strategie</span>
+            </div>
+          </div>
+        </a>
 
-        function getRandomItem(array, last) {
-            if (array.length === 1) return array[0];
-            let item;
-            do {
-                item = array[Math.floor(Math.random() * array.length)];
-            } while (item === last);
-            return item;
-        }
+        <!-- BETTER INDUSTRY -->
+        <a class="project card-img" href="better-industry.html">
+          <div class="project__visual has-img" style="background-image: url('img/better_1200_900.jpg');">
+            <div class="project__cta">↗</div>
+          </div>
+          <div>
+            <div class="project__meta">
+              <span class="project__client">Better Industry</span>
+              <span class="project__year">2026</span>
+            </div>
+            <h3 class="project__name" style="margin-top:12px">Znalost výroby dělá rozdíl</h3>
+            <div class="project__tags" style="margin-top:14px">
+              <span class="tag">Definice značky</span>
+              <span class="tag">Obsahová a mediální strategie</span>
+            </div>
+          </div>
+        </a>
 
-        function hexToRgb(hex) {
-            const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-            return result ? {
-                r: parseInt(result[1], 16),
-                g: parseInt(result[2], 16),
-                b: parseInt(result[3], 16)
-            } : null;
-        }
+        <!-- TREEVIAN -->
+        <a class="project card-img" href="treevian.html">
+          <div class="project__visual has-img" style="background-image: url('img/treevian_1200_900.jpg');">
+            <div class="project__cta">↗</div>
+          </div>
+          <div>
+            <div class="project__meta">
+              <span class="project__client">Treevian</span>
+              <span class="project__year">2024</span>
+            </div>
+            <h3 class="project__name" style="margin-top:12px">Inspiraci a energii čerpáme z přírody</h3>
+            <div class="project__tags" style="margin-top:14px">
+              <span class="tag">Obsahová strategie</span>
+              <span class="tag">Texty</span>
+            </div>
+          </div>
+        </a>
+      </div>
+    </section>
 
-        function darkenColor(hex) {
-            const rgb = hexToRgb(hex);
-            if (!rgb) return hex;
-            const f = 0.6;
-            return `rgb(${Math.round(rgb.r * f)}, ${Math.round(rgb.g * f)}, ${Math.round(rgb.b * f)})`;
-        }
 
-        function update() {
-            const textEl = document.getElementById('randomText');
-            const icon = document.querySelector('.linkedin-icon');
-
-            textEl.style.opacity = '0';
-
-            setTimeout(() => {
-                lastText = getRandomItem(texts, lastText);
-                lastColor = getRandomItem(pastelColors, lastColor);
-
-                textEl.textContent = lastText;
-                document.body.style.backgroundColor = lastColor;
-                icon.style.fill = darkenColor(lastColor);
-
-                textEl.style.opacity = '1';
-            }, 500);
-        }
-
-        update();
-        setInterval(update, 6000);
-    </script>
+    <footer class="footer">
+      <div class="footer__big">Tak&nbsp;co, <em>spolupráce?</em></div>
+      <div class="footer__grid">
+        <div>
+          <a class="contact__email" href="mailto:chci@petrvaclavik.cz">
+            chci@petrvaclavik.cz <span class="arrow">↗</span>
+          </a>
+          <p class="muted" style="margin-top:20px; max-width: 32ch;">Chci strategii, značku, obsah, workshop</p>
+        </div>
+        <div class="footer__col">
+          <h4>Stránky</h4>
+          <ul>
+            <li><a href="index.html">Úvod</a></li>
+            <li><a href="index.html#prace">Práce</a></li>
+            <li><a href="pristup.html">Přístup</a></li>
+            <li><a href="kontakt.html">Kontakt</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h4>Social</h4>
+          <ul>
+            <li><a href="https://www.linkedin.com/in/petrvaclavik/" target="_blank" rel="noopener">LinkedIn ↗</a></li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+  </div>
 </body>
 </html>
